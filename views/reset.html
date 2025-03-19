@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Password</title>
+<style>
+body { 
+    font-family: Arial, sans-serif;
+    background-color: black; /* Set background color to black */
+    color: white; /* Set text color to white */
+}
+.container { 
+    max-width: 300px; 
+    margin: 100px auto; 
+    background-color: #111; /* Dark grey background for container */
+    padding: 20px; /* Add padding for better visual */
+    border-radius: 10px; /* Rounded corners for container */
+    text-align: center; /* Align content in the center */
+}
+input { 
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #222; /* Dark grey background for input fields */
+    color: white; /* Set text color to white */
+}
+button { 
+    width: 150px; /* Fixed width for buttons */
+    padding: 12px 20px; 
+    background-color: #04AA6D; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    margin-bottom: 10px; /* Add margin between buttons */
+}
+button:hover { 
+    background-color: #039c5f; 
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Reset Password</h2>
+  <form id="resetForm" action="#" method="post">
+    <input type="password" id="oldPassword" placeholder="Old Password" name="oldPassword" required>
+    <input type="password" id="newPassword" placeholder="New Password" name="newPassword" required>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+    <button type="button" onclick="changePassword()">Submit</button>
+  </form>
+</div>
+
+<script>
+function changePassword() {
+  var oldPassword = document.getElementById("oldPassword").value;
+  var newPassword = document.getElementById("newPassword").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+
+  // Check if the new password meets the criteria (minimum 7 characters)
+  if (newPassword.length < 7) {
+    alert("Invalid password! Password must be at least 7 characters long.");
+    return;
+  }
+
+  // Check if the new password matches the confirmed password
+  if (newPassword !== confirmPassword) {
+    alert("Passwords do not match! Please enter the same password in both fields.");
+    return;
+  }
+
+  // If all checks pass, display success message
+  alert("Password reset successfully!");
+  // Redirect back to register.html
+  window.location.href = "register.html";
+}
+</script>
+
+</body>
+</html>

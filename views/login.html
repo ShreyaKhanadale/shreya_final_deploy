@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 320px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        button {
+            background: #ebcfb2;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #039c5f;
+        }
+
+        a {
+            color: #04AA6D;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            width: 120px;
+            /* Adjust as needed */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="logo.jpg" class="logo-img">
+        </div>
+        <h2>Login</h2>
+        <form id="loginForm" class="box">
+            <input type="text" id="emailOrPhone" placeholder="Email or Mobile Number" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="button" onclick="login()" href="/">Login</button>
+            <p><a href="#" onclick="showForgotForm()">Forgot Password?</a></p>
+        </form>
+
+        <div id="forgotForm" class="hidden box">
+            <h2>Reset Password</h2>
+            <input type="password" id="oldPassword" placeholder="Old Password" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <button type="button" onclick="changePassword()">Submit</button>
+        </div>
+
+        <p>Not registered? <a href="#" onclick="showCreateAccount()">Create an account</a></p>
+
+        <div id="createAccountForm" class="hidden box">
+            <h2>Create Account</h2>
+            <form id="signupForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="text" id="signupEmail" placeholder="Email" required>
+                <input type="password" id="signupPassword" placeholder="Create Password" required>
+                <button type="button" onclick="signup()">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var emailOrPhone = document.getElementById("emailOrPhone").value;
+            var loginPassword = document.getElementById("loginPassword").value;
+            if (emailOrPhone.trim() === "" || loginPassword.trim() === "") {
+                alert("Invalid! Please enter your email/phone number and password.");
+            } else {
+                window.location.href = "/";
+            }
+        }
+
+        function signup() {
+            var fullName = document.getElementById("fullName").value;
+            var signupEmail = document.getElementById("signupEmail").value;
+            var signupPassword = document.getElementById("signupPassword").value;
+            if (fullName.trim() === "" || signupEmail.trim() === "" || signupPassword.trim() === "") {
+                alert("Invalid! Please fill in all fields.");
+            } else {
+                alert("Account created successfully!");
+            }
+        }
+
+        function showForgotForm() {
+            document.getElementById("forgotForm").classList.remove("hidden");
+        }
+
+        function changePassword() {
+            var oldPassword = document.getElementById("oldPassword").value;
+            var newPassword = document.getElementById("newPassword").value;
+            alert("Password changed successfully!");
+        }
+
+        function showCreateAccount() {
+            document.getElementById("createAccountForm").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>
